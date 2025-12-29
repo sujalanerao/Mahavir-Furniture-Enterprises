@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahavir Furniture & Enterprises | Luxury Showroom Nagpur</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark-gold: #aa8c2c;
+            --black: #1a1a1a;
+            --dark-grey: #2c2c2c;
+            --white: #ffffff;
+            --off-white: #f9f9f9;
+            --text-grey: #cccccc;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--off-white);
+            color: var(--black);
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--gold);
+            margin: 10px auto 0;
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-gold {
+            background-color: var(--gold);
+            color: var(--white);
+        }
+
+        .btn-gold:hover {
+            background-color: var(--dark-gold);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--gold);
+            color: var(--white);
+            background: transparent;
+        }
+
+        /* HEADER */
+        header {
+            background-color: var(--black);
+            color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            color: var(--gold);
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            margin-bottom: 0;
+        }
+
+        .logo span {
+            color: white;
+            font-size: 0.8rem;
+            display: block;
+            letter-spacing: 2px;
+            font-family: 'Poppins';
+            font-weight: 300;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            color: white;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--gold);
+            cursor: pointer;
+        }
+
+        /* HERO */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-grey);
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        /* PRODUCT GRIDS */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .prod-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+
+        .prod-card:hover {
+            transform: translateY(-10px);
+            border-bottom: 3px solid var(--gold);
+        }
+
+        .prod-img {
+            height: 250px;
+            background: #eee;
+            overflow: hidden;
+        }
+
+        .prod-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .prod-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .prod-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .prod-info p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* INSTAGRAM LIVE SECTION */
+        .insta-section {
+            background: white;
+        }
+
+        .insta-handle {
+            font-size: 2.2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .live-feed-box {
+            background: #fdfdfd;
+            border: 1px solid #eee;
+            border-radius: 15px;
+            min-height: 500px;
+            padding: 20px;
+            position: relative;
+        }
+
+        .widget-msg {
+            padding: 100px 20px;
+            color: #888;
+            border: 2px dashed #ddd;
+        }
+
+        /* CONTACT */
+        .contact-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 40px;
+        }
+
+        .map-frame {
+            width: 100%;
+            height: 450px;
+            border-radius: 12px;
+            border: 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--black);
+            color: var(--text-grey);
+            padding: 80px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 25px;
+            border-left: 3px solid var(--gold);
+            padding-left: 15px;
+        }
+
+        .footer-col p {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-col i {
+            color: var(--gold);
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #333;
+            padding-top: 30px;
+            font-size: 0.85rem;
+        }
+
+        /* FLOATING ACTION */
+        .floating-btns {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 9999;
+        }
+
+        .f-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: 0.3s;
+        }
+
+        .f-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .wa {
+            background: #25D366;
+        }
+
+        .ca {
+            background: var(--gold);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+
+            .contact-box {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="floating-btns">
+        <a href="https://wa.me/918459780979" target="_blank" class="f-btn wa"><i class="fab fa-whatsapp"></i></a>
+        <a href="tel:+918459780979" class="f-btn ca"><i class="fas fa-phone-alt"></i></a>
+    </div>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <h1>MAHAVIR</h1>
+                <span>FURNITURE & ENTERPRISES</span>
+            </div>
+            <ul class="nav-links" id="menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#furniture">Furniture</a></li>
+                <li><a href="#electronics">Electronics</a></li>
+                <li><a href="#instagram">Reels & Feed</a></li>
+                <li><a href="#contact">Visit Us</a></li>
+            </ul>
+            <div class="mobile-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h2>Luxury Living & Trusted Electronics</h2>
+            <p>Nagpur's Premier Showroom for Retail & Wholesale Home Solutions. Quality Craftsmanship Meets Modern
+                Technology Under One Roof.</p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="#furniture" class="btn btn-gold">Furniture Collection</a>
+                <a href="#electronics" class="btn btn-outline">Electronics Gallery</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="furniture" class="section-padding">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Luxury Furniture Collection</h2>
+                <p>Wholesale Rates | Custom Designs | Premium Wood</p>
+            </div>
+            <div class="product-grid">
+                <div class="prod-card">
+                    <div class="prod-img"><img
+                            src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600">
+                    </div>
+                    <div class="prod-info">
+                        <h4>Designer Sofa Sets</h4>
+                        <p>Premium Upholstery & Comfort</p>
+                    </div>
+                </div>
+                <div class="prod-card">
+                    <div class="prod-img"><img
+                            src="https://images.unsplash.com/photo-1505693322238-ba147497013c?auto=format&fit=crop&w=600">
+                    </div>
+                    <div class="prod-info">
+                        <h4>Royal King Size Beds</h4>
+                        <p>Teak Wood & Modern Storage</p>
+                    </div>
+                </div>
+                <div class="prod-card">
+                    <div class="prod-img"><img
+                            src="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=600">
+                    </div>
+                    <div class="prod-info">
+                        <h4>Luxury Dining Sets</h4>
+                        <p>Marble & Wooden Top Options</p>
+                    </div>
+                </div>
+                <div class="prod-card">
+                    <div class="prod-img"><img
+                            src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=600">
+                    </div>
+                    <div class="prod-info">
+                        <h4>Modular Wardrobes</h4>
+                        <p>Space-saving Sliding Designs</p>
+                    </div>
+                </div>
+                <div class="prod-card">
+                    <div class="prod-img"><img
+                            src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600">
+                    </div>
+                    <div class="prod-info">
+                        <h4>Office Executive Desks</h4>
+                        <p>For Professional Workspaces</p>
+                    </div>
+                </div>
+                <div class="prod-card">
+                    <div class="prod-img"><img
+                            src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=600">
+                    </div>
+                    <div class="prod-info">
+                        <h4>Ergonomic Office Chairs</h4>
+                        <p>Comfort for Long Working Hours</p>
+                    </div>
+                </div>
+                <div class="prod-card">
+                    <div class="prod-img"><img
+                            src="https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&w=600">
+                    </div>
+                    <div class="prod-info">
+                        <h4>Premium Recliners</h4>
+                        <p>The Ultimate Relaxation Experience</p>
+                    </div>
+                </div>
+                <div class="prod-card">
+                    <div class="prod-img"><img
+                            src="https://images.unsplash.com/photo-1615873966503-455b5421c97a?auto=format&fit=crop&w=600">
+                    </div>
+                    <div class="prod-info">
+                        <h4>Luxury Dressing Tables</h4>
+                        <p>Elegant Storage & Large Mirrors</p>
+                    </div>
+                </div>
+                <div class="prod-card">
+                    <div class="prod-img"><img
+                            src="https://images.unsplash.com/photo-1601760561441-16420502c7e0?auto=format&fit=crop&w=600">
+                    </div>
+                    <div class="prod-info">
+                        <h4>Designer TV Units</h4>
+                        <p>Wall Mounted & Floor Standing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="electronics" class="section-padding" style="background:#111; color:white;">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title" style="color:white;">Home Appliances & Electronics</h2>
+                <p style="color:var(--gold)">Trusted Brands: LG, Samsung, Haier, Whirlpool, Godrej</p>
+            </div>
+            <div class="product-grid">
+                <div class="prod-card">
+                    <div class="prod-img"><img
+                            src="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=600">
+                    </div>
+                    <div class="prod-info">
+                        <h4>Smart 4K LED TVs</h4>
+                        <p>Latest OLED & QLED Range</p>
+                    </div>
+                </div>
+                <div class="prod-card">
+                    <div class="prod-img"><img
+                            src="https://images.unsplash.com/photo-1571175443880-49e1d58563e9?auto=format&fit=crop&w=600">
+                    </div>
+                    <div class="prod-info">
+                        <h4>Advanced Refrigerators</h4>
+                        <p>Single & Double Door Models</p>
+                    </div>
+                </div>
+                <div class="prod-card">
+                    <div class="prod-img"><img
+                            src="https://images.unsplash.com/photo-1626806819282-2c1dc01a5e0c?auto=format&fit=crop&w=600">
+                    </div>
+                    <div class="prod-info">
+                        <h4>Washing Machines</h4>
+                        <p>Fully & Semi-Automatic</p>
+                    </div>
+                </div>
+                <div class="prod-card">
+                    <div class="prod-img"><img
+                            src="https://images.unsplash.com/photo-1614607242094-b1b2cf769ff3?auto=format&fit=crop&w=600">
+                    </div>
+                    <div class="prod-info">
+                        <h4>Air Conditioners (AC)</h4>
+                        <p>Energy Efficient Inverter ACs</p>
+                    </div>
+                </div>
+                <div class="prod-card">
+                    <div class="prod-img"><img
+                            src="https://images.unsplash.com/photo-1522338242992-e1a54906a8da?auto=format&fit=crop&w=600">
+                    </div>
+                    <div class="prod-info">
+                        <h4>Home Theatre Systems</h4>
+                        <p>Surround Sound Experience</p>
+                    </div>
+                </div>
+                <div class="prod-card">
+                    <div class="prod-img"><img
+                            src="https://images.unsplash.com/photo-1544385331-07a8b27732e5?auto=format&fit=crop&w=600">
+                    </div>
+                    <div class="prod-info">
+                        <h4>Desert Air Coolers</h4>
+                        <p>Heavy Duty Summer Cooling</p>
+                    </div>
+                </div>
+                <div class="prod-card">
+                    <div class="prod-img"><img
+                            src="https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=600">
+                    </div>
+                    <div class="prod-info">
+                        <h4>Microwave Ovens</h4>
+                        <p>Convection & Solo Models</p>
+                    </div>
+                </div>
+                <div class="prod-card">
+                    <div class="prod-img"><img
+                            src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600">
+                    </div>
+                    <div class="prod-info">
+                        <h4>Dishwashers</h4>
+                        <p>Smart Hygiene Technology</p>
+                    </div>
+                </div>
+                <div class="prod-card">
+                    <div class="prod-img"><img
+                            src="https://images.unsplash.com/photo-1621501138349-36199203673c?auto=format&fit=crop&w=600">
+                    </div>
+                    <div class="prod-info">
+                        <h4>High Speed Fans</h4>
+                        <p>Ceiling & Pedestal Fans</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="instagram" class="section-padding insta-section">
+        <div class="container text-center">
+            <h2 class="section-title">Reels & New Arrivals</h2>
+            <br>
+            <a href="https://www.instagram.com/mahavir_furniture_enterprises" target="_blank"
+                class="insta-handle">@mahavir_furniture_enterprises</a>
+
+            <div class="live-feed-box">
+                <div class="widget-msg">
+                    <i class="fab fa-instagram" style="font-size: 3rem; color: #dc2743; margin-bottom: 15px;"></i>
+                    <!-- <h4>Live Instagram Feed Placeholder</h4>
+                    <p>Connect your Instagram via LightWidget.com to display your real-time Reels here.</p> -->
+
+                    <!-- LightWidget WIDGET -->
+                    <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script><iframe
+                        src="//lightwidget.com/widgets/91c7e2e7fc7953eb8b926a5208fea945.html" scrolling="no"
+                        allowtransparency="true" class="lightwidget-widget"
+                        style="width:100%;border:0;overflow:hidden;"></iframe>
+
+                </div>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <a href="https://www.instagram.com/mahavir_furniture_enterprises" target="_blank"
+                    class="btn btn-gold">Follow for Offers</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Visit Our Showroom</h2>
+            </div>
+            <div class="contact-box">
+                <div>
+                    <h3>Mahavir Furniture & Enterprises</h3>
+                    <div style="margin-top: 30px;">
+                        <p style="font-size: 1.1rem; margin-bottom: 20px;">
+                            <i class="fas fa-map-marker-alt" style="color:var(--gold)"></i>
+                            Plot No. 4, Kharbi Road, Saibaba Nagar, Near Santoshi Mata Mandir, Nagpur
+                        </p>
+                        <p style="font-size: 1.1rem; margin-bottom: 20px;">
+                            <i class="fas fa-phone-alt" style="color:var(--gold)"></i>
+                            <strong>+91 8459780979</strong>
+                        </p>
+                        <p style="font-size: 1.1rem; margin-bottom: 20px;">
+                            <i class="fas fa-clock" style="color:var(--gold)"></i>
+                            Open Daily: 10:00 AM - 9:00 PM
+                        </p>
+                        <p style="font-size: 1.1rem; margin-bottom: 20px;">
+                            <i class="fas fa-truck" style="color:var(--gold)"></i>
+                            Delivery & Installation Available
+                        </p>
+                        <br>
+                        <a href="https://wa.me/918459780979" class="btn btn-gold"
+                            style="width: 100%; text-align: center;">Inquiry on WhatsApp</a>
+                    </div>
+                </div>
+                <div>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.810055034965!2d79.14430949999999!3d21.1201376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4b9ffd08559fb%3A0x52f181641b6ceb98!2sMahavir%20furnitures!5e0!3m2!1sen!2sin!4v1767027336513!5m2!1sen!2sin"
+                        class="map-frame" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4 style="color:var(--gold)">MAHAVIR FURNITURE</h4>
+                <p>Leading luxury furniture and electronics showroom in Nagpur. One-stop solution for retail and
+                    wholesale buyers.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Details</h4>
+                <p><i class="fas fa-phone"></i> +91 8459780979</p>
+                <p><i class="fab fa-whatsapp"></i> +91 8459780979</p>
+                <p><i class="fas fa-map-marker-alt"></i> Kharbi Road, Nagpur</p>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="#furniture">Furniture</a></li>
+                    <li><a href="#electronics">Electronics</a></li>
+                    <li><a href="#instagram">Instagram Feed</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2025 Mahavir Furniture and Enterprises. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
+        }
+    </script>
+</body>
+
+</html>

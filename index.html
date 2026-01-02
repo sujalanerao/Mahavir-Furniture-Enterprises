@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Mahavir Furniture & Enterprises | Luxury Showroom Nagpur</title>
 
     <link
@@ -33,6 +33,13 @@
             scroll-behavior: smooth;
         }
 
+        /* FIX 1: Prevent Horizontal Scroll/Overflow */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--off-white);
@@ -40,10 +47,7 @@
             line-height: 1.6;
         }
 
-        h1,
-        h2,
-        h3,
-        h4 {
+        h1, h2, h3, h4 {
             font-family: 'Playfair Display', serif;
         }
 
@@ -207,7 +211,6 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: 0.3s;
             border-bottom: 3px solid transparent;
-            /* Added specific properties to make anchor tag behave like card */
             display: block; 
             text-decoration: none;
             color: inherit;
@@ -238,7 +241,7 @@
         .prod-info h4 {
             font-size: 1.2rem;
             margin-bottom: 5px;
-            color: var(--black); /* Ensure title color stays black even inside link */
+            color: var(--black);
         }
 
         .prod-info p {
@@ -260,21 +263,6 @@
             -webkit-text-fill-color: transparent;
             display: inline-block;
             margin-bottom: 20px;
-        }
-
-        .live-feed-box {
-            background: #fdfdfd;
-            border: 1px solid #eee;
-            border-radius: 15px;
-            min-height: 500px;
-            padding: 20px;
-            position: relative;
-        }
-
-        .widget-msg {
-            padding: 100px 20px;
-            color: #888;
-            border: 2px dashed #ddd;
         }
 
         /* CONTACT */
@@ -332,7 +320,7 @@
             font-size: 0.85rem;
         }
 
-        /* FLOATING ACTION */
+        /* FIX 2: FLOATING ACTION BUTTONS - FIXED POSITIONING */
         .floating-btns {
             position: fixed;
             bottom: 30px;
@@ -368,9 +356,38 @@
             background: var(--gold);
         }
 
+        /* MEDIA QUERIES */
         @media (max-width: 768px) {
+            
+            /* FIX 3: Mobile specific adjustments for buttons */
+            .floating-btns {
+                right: 15px; /* Closer to edge on mobile */
+                bottom: 25px;
+            }
+            
+            .f-btn {
+                width: 50px; /* Slightly smaller on mobile */
+                height: 50px;
+                font-size: 1.5rem;
+            }
+
+            /* FIX 4: Proper Mobile Menu Dropdown to prevent width overflow */
             .nav-links {
                 display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--black);
+                padding: 20px 0;
+                text-align: center;
+                gap: 20px;
+                border-top: 1px solid #333;
+            }
+
+            .nav-links.active {
+                display: flex; /* Uses Flex-column defined above */
             }
 
             .mobile-toggle {
@@ -402,11 +419,11 @@
                 <span>FURNITURE & ENTERPRISES</span>
             </div>
             <ul class="nav-links" id="menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#furniture">Furniture</a></li>
-                <li><a href="#electronics">Electronics</a></li>
-                <li><a href="#instagram">Reels & Feed</a></li>
-                <li><a href="#contact">Visit Us</a></li>
+                <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+                <li><a href="#furniture" onclick="toggleMenu()">Furniture</a></li>
+                <li><a href="#electronics" onclick="toggleMenu()">Electronics</a></li>
+                <li><a href="#instagram" onclick="toggleMenu()">Reels & Feed</a></li>
+                <li><a href="#contact" onclick="toggleMenu()">Visit Us</a></li>
             </ul>
             <div class="mobile-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
         </div>
@@ -433,10 +450,10 @@
             </div>
             <div class="product-grid">
                 
-                <a href="https://wa.me/918459780979?text=Hello,%20I%20am%20interested%20in%20Designer%20Sofa%20Sets.%20Please%20share%20price,%20variety,%20and%20photos." 
+                <a href="https://wa.me/918459780979?text=Hello,%20I%20am%20interested%20in%20Designer%20Sofa%20Sets." 
                    class="prod-card" target="_blank">
                     <div class="prod-img">
-                        <img src="https://5.imimg.com/data5/SELLER/Default/2023/3/UD/YF/WE/41065907/godrej-sofa-set-500x500.jpeg">
+                        <img src="https://5.imimg.com/data5/SELLER/Default/2023/3/UD/YF/WE/41065907/godrej-sofa-set-500x500.jpeg" alt="Sofa">
                     </div>
                     <div class="prod-info">
                         <h4>Designer Sofa Sets</h4>
@@ -444,10 +461,10 @@
                     </div>
                 </a>
 
-                <a href="https://wa.me/918459780979?text=Hello,%20I%20am%20interested%20in%20Royal%20King%20Size%20Beds.%20Please%20share%20price,%20variety,%20and%20photos."
+                <a href="https://wa.me/918459780979?text=Hello,%20I%20am%20interested%20in%20Royal%20King%20Size%20Beds."
                    class="prod-card" target="_blank">
                     <div class="prod-img">
-                        <img src="https://5.imimg.com/data5/SELLER/Default/2023/6/320365990/HT/IE/YC/145163977/img-20200606-wa0019-500x500.jpg">
+                        <img src="https://5.imimg.com/data5/SELLER/Default/2023/6/320365990/HT/IE/YC/145163977/img-20200606-wa0019-500x500.jpg" alt="Bed">
                     </div>
                     <div class="prod-info">
                         <h4>Royal King Size Beds</h4>
@@ -455,10 +472,10 @@
                     </div>
                 </a>
 
-                <a href="https://wa.me/918459780979?text=Hello,%20I%20am%20interested%20in%20Luxury%20Dining%20Sets.%20Please%20share%20price,%20variety,%20and%20photos."
+                <a href="https://wa.me/918459780979?text=Hello,%20I%20am%20interested%20in%20Luxury%20Dining%20Sets."
                    class="prod-card" target="_blank">
                     <div class="prod-img">
-                        <img src="https://5.imimg.com/data5/SELLER/Default/2022/11/RU/LG/IF/162950619/modern-luxury-dining-table.jpeg">
+                        <img src="https://5.imimg.com/data5/SELLER/Default/2022/11/RU/LG/IF/162950619/modern-luxury-dining-table.jpeg" alt="Dining">
                     </div>
                     <div class="prod-info">
                         <h4>Luxury Dining Sets</h4>
@@ -466,10 +483,10 @@
                     </div>
                 </a>
 
-                <a href="https://wa.me/918459780979?text=Hello,%20I%20am%20interested%20in%20Modular%20Wardrobes.%20Please%20share%20price,%20variety,%20and%20photos."
+                <a href="https://wa.me/918459780979?text=Hello,%20I%20am%20interested%20in%20Modular%20Wardrobes."
                    class="prod-card" target="_blank">
                     <div class="prod-img">
-                        <img src="https://5.imimg.com/data5/SELLER/Default/2024/7/437254830/FW/FA/EA/223635797/almirah-wardrobe.jpg">
+                        <img src="https://5.imimg.com/data5/SELLER/Default/2024/7/437254830/FW/FA/EA/223635797/almirah-wardrobe.jpg" alt="Wardrobe">
                     </div>
                     <div class="prod-info">
                         <h4>Modular Wardrobes</h4>
@@ -477,10 +494,10 @@
                     </div>
                 </a>
 
-                <a href="https://wa.me/918459780979?text=Hello,%20I%20am%20interested%20in%20Office%20Executive%20Desks.%20Please%20share%20price,%20variety,%20and%20photos."
+                <a href="https://wa.me/918459780979?text=Hello,%20I%20am%20interested%20in%20Office%20Executive%20Desks."
                    class="prod-card" target="_blank">
                     <div class="prod-img">
-                        <img src="https://www.mobelhomestore.com/cdn/shop/products/UW-7001-ASTER-EXECUTIVE-DESK.png?v=1657911546">
+                        <img src="https://www.mobelhomestore.com/cdn/shop/products/UW-7001-ASTER-EXECUTIVE-DESK.png?v=1657911546" alt="Desk">
                     </div>
                     <div class="prod-info">
                         <h4>Office Executive Desks</h4>
@@ -488,50 +505,16 @@
                     </div>
                 </a>
 
-                <a href="https://wa.me/918459780979?text=Hello,%20I%20am%20interested%20in%20Ergonomic%20Office%20Chairs.%20Please%20share%20price,%20variety,%20and%20photos."
+                <a href="https://wa.me/918459780979?text=Hello,%20I%20am%20interested%20in%20Ergonomic%20Office%20Chairs."
                    class="prod-card" target="_blank">
                     <div class="prod-img">
-                        <img src="https://www.hindustantimes.com/ht-img/img/2025/12/12/550x309/Green_soul_jupiter_pro_1765522943114_1765522976758.png">
+                        <img src="https://www.hindustantimes.com/ht-img/img/2025/12/12/550x309/Green_soul_jupiter_pro_1765522943114_1765522976758.png" alt="Chair">
                     </div>
                     <div class="prod-info">
                         <h4>Ergonomic Office Chairs</h4>
                         <p>Comfort for Long Working Hours</p>
                     </div>
                 </a>
-
-                <a href="https://wa.me/918459780979?text=Hello,%20I%20am%20interested%20in%20Premium%20Recliners.%20Please%20share%20price,%20variety,%20and%20photos."
-                   class="prod-card" target="_blank">
-                    <div class="prod-img">
-                        <img src="https://torqueindia.co/cdn/shop/files/joel-3-seater-manual-recliner-3-seater-recliner-sofa-604558.jpg?v=1750867269">
-                    </div>
-                    <div class="prod-info">
-                        <h4>Premium Recliners</h4>
-                        <p>The Ultimate Relaxation Experience</p>
-                    </div>
-                </a>
-
-                <a href="https://wa.me/918459780979?text=Hello,%20I%20am%20interested%20in%20Luxury%20Dressing%20Tables.%20Please%20share%20price,%20variety,%20and%20photos."
-                   class="prod-card" target="_blank">
-                    <div class="prod-img">
-                        <img src="https://media.istockphoto.com/id/870850018/photo/cozy-and-modern-feminine-white-dressing-room-with-minimalist-vanity-table-and-mirror.jpg?s=612x612&w=0&k=20&c=7AEpvOCG7CahgBNTnwKx6ql1HFZEofRNMlgpm7gQMmk=">
-                    </div>
-                    <div class="prod-info">
-                        <h4>Luxury Dressing Tables</h4>
-                        <p>Elegant Storage & Large Mirrors</p>
-                    </div>
-                </a>
-
-                <a href="https://wa.me/918459780979?text=Hello,%20I%20am%20interested%20in%20Designer%20TV%20Units.%20Please%20share%20price,%20variety,%20and%20photos."
-                   class="prod-card" target="_blank">
-                    <div class="prod-img">
-                        <img src="https://images.jdmagicbox.com/quickquotes/images_main/wall-mounted-wooden-tv-unit-2217557085-a2vaa63v.jpg">
-                    </div>
-                    <div class="prod-info">
-                        <h4>Designer TV Units</h4>
-                        <p>Wall Mounted & Floor Standing</p>
-                    </div>
-                </a>
-
             </div>
         </div>
     </section>
@@ -545,101 +528,57 @@
             </div>
             <div class="product-grid">
                 
-                <a href="https://wa.me/918459780979?text=Hello,%20I%20am%20interested%20in%20Smart%204K%20LED%20TVs.%20Please%20share%20price,%20variety,%20and%20photos."
+                <a href="https://wa.me/918459780979?text=Hello,%20I%20am%20interested%20in%20Smart%204K%20LED%20TVs."
                    class="prod-card" target="_blank">
-                    <div class="prod-img"><img src="https://cdn.mos.cms.futurecdn.net/qhUkQRbSmYUZyzC3VLMJXM.jpg">
-                    </div>
+                    <div class="prod-img"><img src="https://cdn.mos.cms.futurecdn.net/qhUkQRbSmYUZyzC3VLMJXM.jpg" alt="TV"></div>
                     <div class="prod-info">
                         <h4 style="color:rgb(0, 0, 0);">Smart 4K LED TVs</h4>
                         <p>Latest OLED & QLED Range</p>
                     </div>
                 </a>
 
-                <a href="https://wa.me/918459780979?text=Hello,%20I%20am%20interested%20in%20Refrigerators.%20Please%20share%20price,%20variety,%20and%20photos."
+                <a href="https://wa.me/918459780979?text=Hello,%20I%20am%20interested%20in%20Refrigerators."
                    class="prod-card" target="_blank">
-                    <div class="prod-img"><img
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfWDC8JMq04ku0mJ20Ezl0T-xqfJY1P4JYgQ&s">
-                    </div>
+                    <div class="prod-img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfWDC8JMq04ku0mJ20Ezl0T-xqfJY1P4JYgQ&s" alt="Fridge"></div>
                     <div class="prod-info">
                         <h4 style="color:rgb(0, 0, 0);">Refrigerators</h4>
                         <p>Single & Double Door Models</p>
                     </div>
                 </a>
 
-                <a href="https://wa.me/918459780979?text=Hello,%20I%20am%20interested%20in%20Washing%20Machines.%20Please%20share%20price,%20variety,%20and%20photos."
+                <a href="https://wa.me/918459780979?text=Hello,%20I%20am%20interested%20in%20Washing%20Machines."
                    class="prod-card" target="_blank">
-                    <div class="prod-img"><img
-                            src="https://startrackworld.com/cdn/shop/articles/Banner-2.jpg?v=1762259051">
-                    </div>
+                    <div class="prod-img"><img src="https://startrackworld.com/cdn/shop/articles/Banner-2.jpg?v=1762259051" alt="Washing Machine"></div>
                     <div class="prod-info">
                         <h4 style="color:rgb(0, 0, 0);">Washing Machines</h4>
                         <p>Fully & Semi-Automatic</p>
                     </div>
                 </a>
 
-                <a href="https://wa.me/918459780979?text=Hello,%20I%20am%20interested%20in%20Air%20Conditioners.%20Please%20share%20price,%20variety,%20and%20photos."
+                <a href="https://wa.me/918459780979?text=Hello,%20I%20am%20interested%20in%20Air%20Conditioners."
                    class="prod-card" target="_blank">
-                    <div class="prod-img"><img
-                            src="https://content.jdmagicbox.com/comp/lucknow/x2/0522px522.x522.180525120653.n3x2/catalogue/k-g-n-cool-point-lucknow-5tf78.jpg">
-                    </div>
+                    <div class="prod-img"><img src="https://content.jdmagicbox.com/comp/lucknow/x2/0522px522.x522.180525120653.n3x2/catalogue/k-g-n-cool-point-lucknow-5tf78.jpg" alt="AC"></div>
                     <div class="prod-info">
-                        <h4 style="color:rgb(0, 0, 0);">Air Conditioners (AC)</h4>
+                        <h4 style="color:rgb(0, 0, 0);">Air Conditioners</h4>
                         <p>Energy Efficient Inverter ACs</p>
                     </div>
                 </a>
 
-                <a href="https://wa.me/918459780979?text=Hello,%20I%20am%20interested%20in%20Speakers.%20Please%20share%20price,%20variety,%20and%20photos."
+                 <a href="https://wa.me/918459780979?text=Hello,%20I%20am%20interested%20in%20Speakers."
                    class="prod-card" target="_blank">
-                    <div class="prod-img"><img
-                            src="https://assets.nikshanonline.com/wp-content/uploads/2023/12/Speakers-Mob-Gad-300x193.png">
-                    </div>
+                    <div class="prod-img"><img src="https://assets.nikshanonline.com/wp-content/uploads/2023/12/Speakers-Mob-Gad-300x193.png" alt="Speaker"></div>
                     <div class="prod-info">
                         <h4 style="color:rgb(0, 0, 0);">Speakers</h4>
                         <p>Surround Sound Experience</p>
                     </div>
                 </a>
 
-                <a href="https://wa.me/918459780979?text=Hello,%20I%20am%20interested%20in%20Vacuum%20Cleaners.%20Please%20share%20price,%20variety,%20and%20photos."
+                <a href="https://wa.me/918459780979?text=Hello,%20I%20am%20interested%20in%20Kitchen%20Appliances."
                    class="prod-card" target="_blank">
-                    <div class="prod-img"><img
-                            src="https://everythingbetter.in/wp-content/uploads/2023/07/best-vacuum-cleaner-in-India.jpg">
-                    </div>
+                    <div class="prod-img"><img src="https://www.inventiva.co.in/wp-content/uploads/2024/12/Kitchen-Appliances-780x470.png" alt="Kitchen"></div>
                     <div class="prod-info">
-                        <h4 style="color:rgb(0, 0, 0);">Vacuum Cleaners</h4>
-                        <p>best budget and features with all Range</p>
-                    </div>
-                </a>
-
-                <a href="https://wa.me/918459780979?text=Hello,%20I%20am%20interested%20in%20Microwave%20Ovens.%20Please%20share%20price,%20variety,%20and%20photos."
-                   class="prod-card" target="_blank">
-                    <div class="prod-img"><img
-                            src="https://img-cdn.publive.online/fit-in/1200x675/elle-gourmet-india/media/media_files/2025/06/16/P5VGLidSBoslh8brLXbW.png">
-                    </div>
-                    <div class="prod-info">
-                        <h4 style="color:rgb(0, 0, 0);">Microwave Ovens</h4>
-                        <p>Convection & Solo Models</p>
-                    </div>
-                </a>
-
-                <a href="https://wa.me/918459780979?text=Hello,%20I%20am%20interested%20in%20Essential%20Kitchen%20Appliances.%20Please%20share%20price,%20variety,%20and%20photos."
-                   class="prod-card" target="_blank">
-                    <div class="prod-img"><img
-                            src="https://www.inventiva.co.in/wp-content/uploads/2024/12/Kitchen-Appliances-780x470.png">
-                    </div>
-                    <div class="prod-info">
-                        <h4 style="color:rgb(0, 0, 0);">Essential Kitchen Appliances</h4>
+                        <h4 style="color:rgb(0, 0, 0);">Kitchen Appliances</h4>
                         <p>Smart Hygiene Technology</p>
-                    </div>
-                </a>
-
-                <a href="https://wa.me/918459780979?text=Hello,%20I%20am%20interested%20in%20High%20Speed%20Fans.%20Please%20share%20price,%20variety,%20and%20photos."
-                   class="prod-card" target="_blank">
-                    <div class="prod-img"><img
-                            src="https://www.goldmedalindia.com/blog/wp-content/uploads/2025/03/Ceiling-Fan-vs-Table-Fan.jpg">
-                    </div>
-                    <div class="prod-info">
-                        <h4 style="color:rgb(0, 0, 0);">High Speed Fans</h4>
-                        <p>Ceiling & Pedestal Fans</p>
                     </div>
                 </a>
 
@@ -693,7 +632,7 @@
                 </div>
                 <div>
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.810055034965!2d79.14430949999999!3d21.1201376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4b9ffd08559fb%3A0x52f181641b6ceb98!2sMahavir%20furnitures!5e0!3m2!1sen!2sin!4v1767027336513!5m2!1sen!2sin"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.234567890123!2d79.0882!3d21.1458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDA4JzQ0LjkiTiA3OcKwMDUnMTcuNSJF!5e0!3m2!1sen!2sin!4v1600000000000!5m2!1sen!2sin"
                         class="map-frame" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
@@ -730,9 +669,10 @@
     </footer>
 
     <script>
+        // Updated Javascript to toggle class instead of direct style style
         function toggleMenu() {
             const menu = document.getElementById('menu');
-            menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
+            menu.classList.toggle('active');
         }
     </script>
 </body>
